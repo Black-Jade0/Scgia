@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import Sidebar from "./Components/Sidebar";
-
 // Import Page Components
 import Dashboard from "./Pages/Dashboard";
-import EligibilityEngine from "./Pages/EligibilityEngine";
+import EligibilityEngine from "./Pages/EligibilityEngine";  
+import ProjectTracker from "./Pages/ProjectTracker";    
+import AiSkillMatcher from "./Pages/AiSkillMatcher";
+import AuditDashboard from "./Pages/AuditDashboard";
 import CitizenPortal from "./Pages/CitizenPortal";
 import EnumeratorApp from "./Pages/Enumerator";
 
@@ -17,9 +19,9 @@ const UnderDevelopment: React.FC = () => (
     </div>
 );
 
+// This layout is for the internal dashboard pages
 const AppLayout: React.FC = () => {
     const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
-
     return (
         <div className="min-h-screen bg-gray-50">
             <style>{`
@@ -31,9 +33,7 @@ const AppLayout: React.FC = () => {
           animation: fadeIn 0.6s ease-out forwards;
         }
       `}</style>
-
             <Sidebar isOpen={sidebarOpen} setIsOpen={setSidebarOpen} />
-
             <main className="lg:ml-64 p-6 lg:p-8">
                 <Outlet />
             </main>
@@ -45,15 +45,19 @@ const App: React.FC = () => {
     return (
         <BrowserRouter>
             <Routes>
+                {/* Routes WITH the sidebar layout */}
                 <Route path="/" element={<AppLayout />}>
                     <Route index element={<Dashboard />} />
                     <Route path="eligibility" element={<EligibilityEngine />} />
-                    <Route path="citizen" element={<CitizenPortal />} />
-                    <Route path="enumerator" element={<EnumeratorApp />} />
+                    <Route path="Projecttracker" element={<ProjectTracker />} />
+                    <Route path="Aiskillmatcher" element={<AiSkillMatcher />} />
+                    <Route path="audit" element={<AuditDashboard />} />
                     <Route path="registry" element={<UnderDevelopment />} />
-                    <Route path="projects" element={<UnderDevelopment />} />
-                    <Route path="audit" element={<UnderDevelopment />} />
                 </Route>
+
+                {/* Standalone routes WITHOUT the sidebar */}
+                <Route path="/citizen" element={<CitizenPortal />} />
+                <Route path="/enumerator" element={<EnumeratorApp />} />
             </Routes>
         </BrowserRouter>
     );

@@ -2,14 +2,12 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import {
     Home,
-    Users,
-    Briefcase,
     Target,
     FileText,
     Menu,
     X,
-    UserCircle,
-    Camera,
+    LayoutGrid,
+    Sparkles,
 } from "lucide-react";
 
 interface SidebarProps {
@@ -20,12 +18,11 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen }) => {
     const menuItems = [
         { id: "dashboard", label: "Dashboard", icon: Home, path: "/" },
-        { id: "registry", label: "Registry", icon: Users, path: "/registry" },
         {
-            id: "projects",
-            label: "Projects",
-            icon: Briefcase,
-            path: "/projects",
+            id: "project-tracker",
+            label: "Project Tracker",
+            icon: LayoutGrid,
+            path: "/Projecttracker",
         },
         {
             id: "eligibility",
@@ -34,16 +31,10 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen }) => {
             path: "/eligibility",
         },
         {
-            id: "citizen",
-            label: "Citizen Portal",
-            icon: UserCircle,
-            path: "/citizen",
-        },
-        {
-            id: "enumerator",
-            label: "Enumerator App",
-            icon: Camera,
-            path: "/enumerator",
+            id: "ai-matcher",
+            label: "AI Matchmaker",
+            icon: Sparkles,
+            path: "/Aiskillmatcher",
         },
         { id: "audit", label: "Audit Log", icon: FileText, path: "/audit" },
     ];
@@ -56,7 +47,6 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen }) => {
             >
                 {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
-
             <aside
                 className={`fixed left-0 top-0 h-screen bg-white border-r border-gray-200 transition-transform duration-300 z-40 ${
                     isOpen ? "translate-x-0" : "-translate-x-full"
@@ -67,7 +57,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen }) => {
                         PM-AJAY Connect
                     </h1>
                     <p className="text-sm text-gray-600 mt-1">
-                        Unified Beneficiary System
+                        Admin Dashboard
                     </p>
                 </div>
                 <nav className="p-4">
