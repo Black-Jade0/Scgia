@@ -1,9 +1,9 @@
 import React from "react";
-import SchemeCard, { type Scheme } from "../Components/SchemeCard";
-import { CheckCircle } from "lucide-react";
+import SchemeCard from "../Components/SchemeCard";
+import type { Scheme } from "../Components/SchemeCard";
+import { CheckCircle, Plus } from "lucide-react";
 
 const EligibilityEngine: React.FC = () => {
-    // Use the imported Scheme type for our data array
     const schemes: Scheme[] = [
         {
             name: "Income Generation Scheme",
@@ -41,7 +41,7 @@ const EligibilityEngine: React.FC = () => {
 
     return (
         <div className="space-y-6">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-wrap items-center justify-between gap-4">
                 <div>
                     <h1 className="text-3xl font-bold text-gray-900">
                         Smart Eligibility Engine
@@ -50,7 +50,8 @@ const EligibilityEngine: React.FC = () => {
                         Policy-as-Code: Automated, Transparent, Bias-Free
                     </p>
                 </div>
-                <button className="bg-orange-500 text-white px-6 py-3 rounded-lg font-medium hover:bg-orange-600 transition-colors flex items-center gap-2">
+                <button className="bg-orange-500 text-white px-5 py-3 rounded-lg font-medium hover:bg-orange-600 transition-colors flex items-center gap-2">
+                    <Plus size={20} />
                     <span>Create New Rule</span>
                 </button>
             </div>

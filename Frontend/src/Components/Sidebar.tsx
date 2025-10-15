@@ -8,9 +8,10 @@ import {
     FileText,
     Menu,
     X,
+    UserCircle,
+    Camera,
 } from "lucide-react";
 
-// Define the types for the component's props
 interface SidebarProps {
     isOpen: boolean;
     setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -31,6 +32,18 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen }) => {
             label: "Eligibility Engine",
             icon: Target,
             path: "/eligibility",
+        },
+        {
+            id: "citizen",
+            label: "Citizen Portal",
+            icon: UserCircle,
+            path: "/citizen",
+        },
+        {
+            id: "enumerator",
+            label: "Enumerator App",
+            icon: Camera,
+            path: "/enumerator",
         },
         { id: "audit", label: "Audit Log", icon: FileText, path: "/audit" },
     ];
@@ -57,43 +70,25 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen }) => {
                         Unified Beneficiary System
                     </p>
                 </div>
-
                 <nav className="p-4">
-                    {menuItems.map((item) => {
-                        const Icon = item.icon;
-                        return (
-                            <NavLink
-                                key={item.id}
-                                to={item.path}
-                                onClick={() => setIsOpen(false)}
-                                className={({ isActive }) =>
-                                    `w-full flex items-center gap-3 px-4 py-3 rounded-lg mb-2 transition-all ${
-                                        isActive
-                                            ? "bg-blue-900 text-white shadow-lg"
-                                            : "text-gray-700 hover:bg-gray-100"
-                                    }`
-                                }
-                            >
-                                <Icon size={20} />
-                                <span className="font-medium">
-                                    {item.label}
-                                </span>
-                            </NavLink>
-                        );
-                    })}
+                    {menuItems.map((item) => (
+                        <NavLink
+                            key={item.id}
+                            to={item.path}
+                            onClick={() => setIsOpen(false)}
+                            className={({ isActive }) =>
+                                `w-full flex items-center gap-3 px-4 py-3 rounded-lg mb-2 transition-all ${
+                                    isActive
+                                        ? "bg-blue-900 text-white shadow-lg"
+                                        : "text-gray-700 hover:bg-gray-100"
+                                }`
+                            }
+                        >
+                            <item.icon size={20} />
+                            <span className="font-medium">{item.label}</span>
+                        </NavLink>
+                    ))}
                 </nav>
-
-                <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-200">
-                    <div className="bg-gradient-to-r from-orange-500 to-orange-600 p-4 rounded-lg text-white">
-                        <p className="text-sm font-semibold mb-1">Need Help?</p>
-                        <p className="text-xs mb-3 opacity-90">
-                            Check our documentation.
-                        </p>
-                        <button className="w-full bg-white text-orange-600 text-sm font-medium py-2 rounded-lg hover:bg-gray-50 transition-colors">
-                            Documentation
-                        </button>
-                    </div>
-                </div>
             </aside>
         </>
     );

@@ -47,7 +47,7 @@ const Dashboard: React.FC = () => {
 
     return (
         <div className="space-y-6">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-wrap items-center justify-between gap-4">
                 <div>
                     <h1 className="text-3xl font-bold text-gray-900">
                         Unified Beneficiary Registry
@@ -137,7 +137,7 @@ const Dashboard: React.FC = () => {
             </div>
 
             <div className="bg-gradient-to-r from-blue-900 to-indigo-900 rounded-2xl p-6 text-white shadow-lg">
-                <div className="flex items-center justify-between">
+                <div className="flex flex-wrap items-center justify-between gap-4">
                     <div>
                         <h3 className="text-xl font-bold mb-2">
                             Data Integration Pipeline
