@@ -250,7 +250,7 @@ const ProjectTracker: React.FC = () => {
                             </tr>
                         </thead>
                         <tbody className="divide-y divide-gray-200">
-                            {projects.map((project, idx) => (
+                            {projects.map((project) => (
                                 <tr
                                     key={project.id}
                                     className="hover:bg-gray-50 transition-colors"

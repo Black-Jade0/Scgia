@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 
 const CitizenPortal: React.FC = () => {
-    const [currentStep, setCurrentStep] = useState(1);
+    // const [currentStep, setCurrentStep] = useState(1);
 
     const timelineSteps = [
         {
